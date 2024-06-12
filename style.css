@@ -1,0 +1,276 @@
+:root {
+    --clr-primary-300: hsl(4, 100%, 95%);
+    --clr-primary-400: hsl(4, 100%, 67%);
+    --clr-primary-600: hsl(345, 97%, 66%);
+    --clr-neutral-800: hsl(234, 29%, 20%);
+    --clr-neutral-600: hsl(235, 18%, 26%);
+    --clr-neutral-400: hsl(231, 7%, 60%);
+    --clr-neutral-100: hsl(0, 0%, 100%);
+
+    --ff-primary: "Roboto", sans-serif;
+    --fw-regular: 400;
+    --fw-bold: 700;
+}
+
+/* Reset
+Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, .signup--form-field, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for .signup--form-fields and buttons */
+.signup--form-field, button,
+textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/* General Styles */
+body {
+    font-family: var(--ff-primary);
+    font-weight: var(--fw-regular);
+    font-size: 1rem;
+    color: var(--clr-neutral-800);
+    background-color: var(--clr-neutral-600);
+    display: grid;
+    place-content: center;
+    padding-block: 1rem;
+}
+
+strong {
+  font-weight: var(--fw-bold);
+}
+
+/* Sign Up */
+.signup {
+    --space-between: 2rem;
+    --padding: 1.5rem;
+    display: grid;
+    gap: var(--space-between);
+    padding-bottom: 2rem;
+    background-color: var(--clr-neutral-100);
+    max-width: 930px;
+    /* display:none; */
+}
+
+@media screen and (min-width: 32em) {
+  .signup {
+    border-radius: 2.25rem;
+    overflow: hidden;
+  }
+}
+
+.signup--image img {
+  width: 100%;
+}
+
+
+.signup--body {
+  padding-inline: var(--padding);
+}
+
+.signup--title {
+  font-weight: var(--fw-bold);
+  font-size: 2.3rem;
+  padding-bottom: 1.25rem;
+}
+
+.signup--features {
+  margin-block: 1.5rem;
+  padding-left: 1.25rem;
+}
+
+.signup--features li {
+  list-style-image: url('./assets/images/icon-list.svg');
+  padding: 0 0 1rem .5rem;
+}
+
+@media screen and (min-width: 55em) {
+  body {
+    padding-inline: 2rem;
+  }
+  .signup {
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    grid-template-areas:
+    "content image";
+    padding: 1.75rem 1.5rem 1.5rem 4rem;
+  }
+
+  .signup--image {
+    grid-area: image;
+  }
+
+  .signup--body {
+    grid-area: content;
+    padding: 0;
+  }
+
+  .signup--title {
+    font-size: 3.5rem;
+  }
+
+  .signup--features li {
+    padding-bottom: .5rem;
+  }
+}
+
+/*  Form Styles */
+.form-group {
+  position: relative;
+}
+
+label {
+  display: block;
+  font-weight: var(--fw-bold);
+  font-size: .75rem;
+  padding-bottom: .5rem;
+}
+
+.signup--form-field {
+  width: 100%;
+  padding: 1.25em 1.5em;
+  border-radius: .5rem;
+  border: 1px solid var(--clr-neutral-400);
+  color: var(--clr-neutral-400);
+  margin-bottom: 1.25rem;
+}
+
+.signup--form-field:focus-visible {
+  outline-color: var(--clr-neutral-600);
+  color: var(--clr-neutral-800);
+}
+
+.signup--form-field.error {
+  color:var(--clr-primary-400);
+  background-color: var(--clr-primary-300);
+  border-color: var(--clr-primary-400);
+}
+
+.signup--form-field.error::placeholder {
+  color:var(--clr-primary-400);
+}
+
+.signup--error-message {
+  font-weight: var(--fw-bold);
+  font-size: .75rem;
+  color: var(--clr-primary-400);
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.btn {
+  cursor: pointer;
+  background-color: var(--clr-neutral-800);
+  color: var(--clr-neutral-100);
+  border-radius: .5rem;
+  padding: 1.125em 1.5em;
+  font-weight: var(--fw-bold);
+  border: none;
+  display: block;
+  width: 100%;
+}
+
+.btn:is(:hover, :focus) {
+  background: linear-gradient(to right, var(--clr-primary-600), var(--clr-primary-400));
+  box-shadow: 0 10px 25px 0 hsla(4, 100%, 67%, .5);
+  }
+  
+/* Confirmation */
+.signup--confirmation {
+  --space-between: 2rem;
+  --padding: 7rem 1.5rem 2rem 1.5rem;
+  padding: var(--padding);
+  background-color: var(--clr-neutral-100);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.signup--confirmation .signup--title {
+  margin-top: 2rem;
+}
+
+.btn--dismiss {
+ margin-top: auto;
+ align-self: flex-end;
+}
+
+@media screen and (min-width: 55em) {
+  .signup--confirmation {
+    --padding: 3rem 4rem 4rem 4rem;
+
+    display: block;
+    width: 500px;
+    border-radius: 2.25rem;
+    min-height: auto;
+  }
+
+  .confirmation--instructions {
+    padding-bottom: 2rem;
+  }
+}
+
+/* Utilities */
+.hidden {
+  display: none;
+}
